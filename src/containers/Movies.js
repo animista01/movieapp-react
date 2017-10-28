@@ -20,22 +20,24 @@ export class Movies extends Component {
 
   onChangeNextPage = (event) => {
     event.preventDefault();
-    let newPage = ++this.state.page;
-    console.log(newPage);
-    console.log(this.state.type);
+    let newPage = this.state.page + 1;
+    this.setState({ page: newPage });
     this.props.fetchMovies(this.state.type, newPage);
   }
 
   onChangePrevPage = (event) => {
     event.preventDefault();
     if (this.state.page > 1) {
-      let newPage = --this.state.page;
-      console.log(newPage);
-      console.log("Go back");
-      console.log(this.state.type);
+      let newPage = this.state.page - 1;
+      this.setState({ page: newPage });
       this.props.fetchMovies(this.state.type, newPage);
     }
   }
+
+  isDisable = () => {
+    return (this.state.page == 1);
+  }
+
   render(){
     return(
       <div>
@@ -58,8 +60,8 @@ export class Movies extends Component {
             <Movie key={movie.id} movie={movie} />
           )}
         </ul>
-        <button onClick={(event) => this.onChangePrevPage(event)}>Prev</button>
-        <button onClick={(event) => this.onChangeNextPage(event)}>Next</button>
+        <button disabled={this.isDisable()} onClick={this.onChangePrevPage}>Prev</button>
+        <button onClick={this.onChangeNextPage}>Next</button>
       </div>
     )
   }
