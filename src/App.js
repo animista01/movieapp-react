@@ -18,7 +18,7 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <Switch>
-            <Route path='/movie' component={Movie} />
+            <Route path='/movie/:id' component={Movie} />
             <Route path='/' component={Movies} />
           </Switch>
         </BrowserRouter>

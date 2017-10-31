@@ -6,7 +6,9 @@ const Movie = ({movie}) => {
   }
   return(
     <li>
-      <img src={getFullPath(movie.poster_path)} />
+      <a href={'/movie/' + movie.id}>
+        <img src={getFullPath(movie.poster_path)} />
+      </a>
       <p>{movie.vote_average}</p>
       <p>{movie.title}</p>
       <p>{movie.overview}</p>
