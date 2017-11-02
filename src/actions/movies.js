@@ -2,7 +2,7 @@ import axios from 'axios';
 
 var http = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
-  timeout: 3000
+  timeout: 5000
 });
 
 export const FETCH_MOVIES = 'FETCH_MOVIES';
