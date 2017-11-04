@@ -54,7 +54,11 @@ export class Movies extends Component {
             <Movie key={movie.id} movie={movie} />
           )}
         </ul>
-        <Paginator page={this.state.page} total_pages={this.props.movies.total_pages} onPaginate={this.handlePagination} />
+        <Paginator
+          page={this.state.page}
+          totalPages={this.props.movies.total_pages}
+          onPaginate={this.handlePagination}
+        />
       </div>
     )
   }

@@ -8,7 +8,7 @@ const Paginator = (props) => {
     <div>
       <span>
         <button disabled={isDisable()} onClick={(event) => props.onPaginate(event, 'back')}>Prev</button>
-        {props.page} of {props.total_pages}
+        {props.page} of {props.totalPages}
         <button onClick={(event) => props.onPaginate(event, 'next')}>Next</button>
       </span>
       <br />

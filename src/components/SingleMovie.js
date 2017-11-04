@@ -4,7 +4,7 @@ const SingleMovie = (props) => {
 	let movie = props.movie;
   let year = new Date(movie.release_date);
   let vote = movie.vote_average * 10;
-  let duration = movie.runtime / 60;
+  let duration = (movie.runtime / 60).toFixed(2);
   function getFullPath(imageUrl){
     return "https://image.tmdb.org/t/p/w500/" + imageUrl;
   }
@@ -28,7 +28,7 @@ const SingleMovie = (props) => {
 		      <p key={genre.id}>{genre.name}</p>
 		    )}
 		  </span>
-		  <p><b>Duration:</b> {duration}</p>
+		  <p><b>Duration:</b> {duration} hrs</p>
 		  <br />
 		  <span><b>Keywords:</b>
 		    {movie.keywords.keywords.map(keyword =>
