@@ -7,7 +7,6 @@ import OtherPaginator from '../components/OtherPaginator';
 import PropTypes from 'prop-types';
 
 const Home = (props) => {
-
   return(
     <div>
       <HeaderMenu onSelectList={props.handleSelectList} />
@@ -17,15 +16,17 @@ const Home = (props) => {
           <Movie key={movie.id} movie={movie} />
         )}
       </ul>
-      <Paginator
+      <OtherPaginator
         totalPages={props.movies.total_pages}
         onPaginate={props.handlePagination}
-      />
-      <OtherPaginator
       />
     </div>
   );
 }
+// <Paginator
+//   totalPages={props.movies.total_pages}
+//   onPaginate={props.handlePagination}
+// />
 Home.propTypes = {
   movie: PropTypes.array
 }
