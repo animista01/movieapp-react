@@ -2,21 +2,17 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetch as fetchMovies, searchMovie } from '../actions/movies';
-import Movie from '../components/MovieItem';
-import Search from '../components/Search';
-import HeaderMenu from '../components/HeaderMenu';
-import Paginator from '../components/Paginator';
+import Home from '../components/Home';
 
 export class Movies extends Component {
   state = {
     type: "popular",
-    page: 1,
     query: ''
   }
   componentWillMount(){
     this.props.fetchMovies();
   }
-  handleOnSelectList = (event, type) => {
+  handleSelectList = (event, type) => {
     event.preventDefault();
     this.setState({ type: type });
     this.props.fetchMovies(type);
@@ -30,36 +26,20 @@ export class Movies extends Component {
     }
   }
 
-  handlePagination = (event, type) => {
-    event.preventDefault();
-    let newPage = this.state.page;
-    if (type == "back") {
-      if (this.state.page > 1) {
-        newPage = this.state.page - 1;
-      }
-    } else {
-      newPage = this.state.page + 1;
-    }
-    this.setState({ page: newPage });
-    this.props.fetchMovies(this.state.type, newPage);
+  handlePagination = (pageNumber) => {
+    console.log(".pageNumber", pageNumber);
+    this.props.fetchMovies(this.state.type, pageNumber);
   }
 
   render(){
     return(
-      <div>
-        <HeaderMenu onSelectList={this.handleOnSelectList} />
-        <Search value={this.state.query} onSearch={this.handleOnSearch} />
-        <ul>
-          {this.props.movies.results.map(movie =>
-            <Movie key={movie.id} movie={movie} />
-          )}
-        </ul>
-        <Paginator
-          page={this.state.page}
-          totalPages={this.props.movies.total_pages}
-          onPaginate={this.handlePagination}
-        />
-      </div>
+      <Home
+        movies={this.props.movies}
+        query={this.state.query}
+        handlePagination={this.handlePagination}
+        handleSelectList={this.handleSelectList}
+        handleOnSearch={this.handleOnSearch}
+      />
     )
   }
 }

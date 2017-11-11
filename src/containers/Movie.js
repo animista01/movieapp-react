@@ -10,9 +10,7 @@ class Movie extends Component {
   }
   render(){
     return(
-      <div>
-       <SingleMovie movie={this.props.movie}  />
-      </div>
+      <SingleMovie movie={this.props.movie}  />
     )
   }
 }
