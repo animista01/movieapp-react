@@ -27,7 +27,6 @@ export class Movies extends Component {
   }
 
   handlePagination = (pageNumber) => {
-    console.log(".pageNumber--->", pageNumber);
     this.props.fetchMovies(this.state.type, pageNumber);
   }
 

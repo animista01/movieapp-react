@@ -2,7 +2,7 @@ import React from 'react';
 
 const Movie = ({movie}) => {
   function getFullPath(imageUrl){
-    return "https://image.tmdb.org/t/p/w500/" + imageUrl;
+    return "https://image.tmdb.org/t/p/w150/" + imageUrl;
   }
   return(
     <li>

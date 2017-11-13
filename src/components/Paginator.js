@@ -15,9 +15,8 @@ export default class Paginator extends Component {
     } else {
       newPage = this.state.currentPage + 1;
     }
-    console.log(newPage);
     this.setState({ currentPage: newPage });
-    this.props.onPaginate(newPage)
+    this.props.onPaginate(newPage);
   }
 
   isDisable = () => {
